@@ -1,8 +1,10 @@
 package ro.pub.cs.systems.eim.Colocviu1_1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Environment;
 import android.util.Log;
+import android.view.View;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -40,6 +42,20 @@ public class Colocviu1_1MainActivity extends AppCompatActivity {
 
         TextView textCountTextView = (TextView) findViewById(R.id.click_count_text_view);
         textCountTextView.setText("Click count: " + this.clickCount);
+
+        findViewById(R.id.navigate_button).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(view.getContext(), SecondActivity.class);
+                intent.putExtra("key", "BANANAAAA");
+                clickCount = 0;
+                TextView textView = findViewById(R.id.textView2);
+                textView.setText("");
+                TextView textCountTextView = (TextView) findViewById(R.id.click_count_text_view);
+                textCountTextView.setText("Click count: " + clickCount);
+                view.getContext().startActivity(intent);
+            }
+        });
     }
 
     @Override
